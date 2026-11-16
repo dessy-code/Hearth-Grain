@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Joseph is a web developer based in Ogbomoso, Nigeria, creating modern websites for businesses, schools, and startups."
+    />
+    <title>Joseph | Web Developer in Ogbomoso, Nigeria</title>
+    <style>
+      :root {
+        --bg: #f7f3eb;
+        --panel: #fffdf9;
+        --primary: #1f5d3d;
+        --primary-dark: #163f2d;
+        --accent: #d7a63a;
+        --text: #1e1d1b;
+        --muted: #5d5a53;
+        --line: rgba(31, 93, 61, 0.12);
+        --shadow: 0 20px 40px rgba(17, 41, 25, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(180deg, #f6f1e8 0%, #fffaf5 100%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(247, 243, 235, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 76px;
+      }
+
+      .brand {
+        font-weight: 800;
+        font-size: 1.2rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--primary-dark);
+      }
+
+      .brand span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-size: 0.97rem;
+        color: var(--muted);
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.9rem 1.5rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        transition: 0.2s ease;
+      }
+
+      .button.primary {
+        background: var(--primary);
+        color: #fff;
+        box-shadow: 0 12px 28px rgba(31, 93, 61, 0.25);
+      }
+
+      .button.primary:hover {
+        background: var(--primary-dark);
+      }
+
+      .button.secondary {
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.4);
+        color: var(--text);
+      }
+
+      .button.secondary:hover {
+        border-color: rgba(31, 93, 61, 0.3);
+      }
+
+      .hero {
+        padding: 72px 0 50px;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 36px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 0.5rem 0.9rem;
+        background: rgba(215, 166, 58, 0.12);
+        border: 1px solid rgba(215, 166, 58, 0.2);
+        color: var(--primary-dark);
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 5vw, 5rem);
+        line-height: 1.05;
+        margin: 20px 0 18px;
+        letter-spacing: -0.06em;
+      }
+
+      h1 .highlight {
+        color: var(--primary);
+      }
+
+      .hero-copy p {
+        max-width: 600px;
+        font-size: 1.08rem;
+        color: var(--muted);
+        margin: 0 0 26px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 30px;
+      }
+
+      .mini-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 26px;
+      }
+
+      .mini-stat {
+        min-width: 110px;
+      }
+
+      .mini-stat strong {
+        display: block;
+        font-size: 1.7rem;
+        color: var(--primary-dark);
+      }
+
+      .mini-stat span {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .profile-card {
+        position: relative;
+        background: linear-gradient(180deg, rgba(31, 93, 61, 0.96), rgba(22, 63, 45, 0.94));
+        color: #fff;
+        border-radius: 28px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .profile-figure {
+        height: 460px;
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.18)),
+          url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-badge {
+        position: absolute;
+        right: -18px;
+        bottom: 22px;
+        background: #fff;
+        color: var(--primary-dark);
+        padding: 1rem 1.2rem;
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        min-width: 180px;
+      }
+
+      .profile-badge strong {
+        display: block;
+        font-size: 1.2rem;
+      }
+
+      .profile-badge span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      section {
+        padding: 46px 0;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 18px;
+        margin-bottom: 28px;
+      }
+
+      .section-label {
+        color: var(--primary);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin: 8px 0 0;
+        line-height: 1.12;
+      }
+
+      .about {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .about-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        padding: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .about-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(130px, 1fr));
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .about-item {
+        background: rgba(31, 93, 61, 0.04);
+        border: 1px solid rgba(31, 93, 61, 0.08);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .about-item strong {
+        display: block;
+        color: var(--primary-dark);
+      }
+
+      .about-item span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .services-grid,
+      .project-grid,
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .service, .project, .testimonial {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px;
+        box-shadow: 0 10px 24px rgba(17, 41, 25, 0.04);
+      }
+
+      .icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: rgba(31, 93, 61, 0.08);
+        display: grid;
+        place-items: center;
+        font-size: 1.5rem;
+        margin-bottom: 18px;
+      }
+
+      .service h3,
+      .project h3,
+      .testimonial h3 {
+        margin: 0 0 10px;
+        font-size: 1.35rem;
+      }
+
+      .service p,
+      .project p,
+      .testimonial p,
+      .small-note {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .project {
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .project-thumb {
+        height: 210px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .project-body {
+        padding: 24px;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 14px 0 0;
+      }
+
+      .tags span {
+        background: rgba(31, 93, 61, 0.08);
+        color: var(--primary-dark);
+        border-radius: 999px;
+        padding: 0.45rem 0.7rem;
+        font-size: 0.74rem;
+        font-weight: 700;
+      }
+
+      .cta-banner {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        border-radius: 28px;
+        padding: 30px 26px;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .cta-banner p {
+        margin: 6px 0 0;
+        color: rgba(255,255,255,0.76);
+      }
+
+      .contact-box {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 28px;
+      }
+
+      .contact-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .contact-card strong {
+        display: block;
+        color: var(--primary-dark);
+        margin-bottom: 8px;
+      }
+
+      footer {
+        padding: 26px 0 40px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .footer-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner,
+        .about,
+        .services-grid,
+        .project-grid,
+        .testimonial-grid,
+        .contact-box {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .cta-banner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .hero {
+          padding-top: 46px;
+        }
+
+        .profile-figure {
+          height: 360px;
+        }
+
+        .mini-stats {
+          gap: 14px;
+        }
+
+        h1 {
+          font-size: 2.7rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="#top" class="brand">Joseph<span>.</span></a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="button primary" href="#contact">Hire Me</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow">Web Developer • Ogbomoso, Nigeria</span>
+            <h1>
+              I build <span class="highlight">clean</span>, modern websites that help
+              brands grow online.
+            </h1>
+            <p>
+              Hi, I'm Joseph — a web developer helping businesses, schools, and startups in
+              Ogbomoso and beyond create fast, responsive, and professional online experiences.
+            </p>
+            <div class="cta-row">
+              <a href="#projects" class="button primary">View Projects</a>
+              <a href="#contact" class="button secondary">Let's Talk</a>
+            </div>
+            <div class="mini-stats">
+              <div class="mini-stat">
+                <strong>4+</strong>
+                <span>Years</span>
+              </div>
+              <div class="mini-stat">
+                <strong>35+</strong>
+                <span>Projects</span>
+              </div>
+              <div class="mini-stat">
+                <strong>100%</strong>
+                <span>Custom Work</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Joseph profile image">
+            <div class="profile-card">
+              <div class="profile-figure">
+                <div class="profile-badge">
+                  <strong>Joseph</strong>
+                  <span>Frontend & Website Designer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-label">About Me</div>
+              <h2>Web solutions built with strategy and care.</h2>
+            </div>
+          </div>
+
+          <div class="about">
+            <div class="about-card">
+              <p class="small-note">
+                I help people turn ideas into user-friendly websites that look professional and work
+                flawlessly on every device. From landing pages to business websites, I focus on
+                performance, clarity, and conversion.
+              </p>
+              <div class="about-list">
+                <div class="about-item">
+                  <strong>HTML5</strong>
+                  <span>Clean structure</span>
+                </div>
+                <div class="about-item">
+                  <strong>CSS3</strong>
+                  <span>Modern styling</span>
+                </div>
+                <div class="about-item">
+                  <strong>JavaScript</strong>
+                  <span>Interactive UX</span>
+                </div>
+                <div class="about-item">
+                  <strong>Responsive</strong>
+                  <span>Mobile ready</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-card">
+              <p class="small-note">
+                Based in Ogbomoso, Nigeria, I work with local businesses, individuals, and growing
+                brands who want a stronger online presence. My goal is to create websites that are
+                not only visually attractive but also simple, memorable, and easy to use.
+              </p>
+              <br />
+              <p class="small-note">
+                Whether you need a portfolio, business site, service website, or a modern homepage,
+                I can design and deliver something that fits your vision and helps people trust your
+                brand.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Services</div>
+              <h2>What I can help you with.</h2>
+            </div>
+          </div>
+
+          <div class="services-grid">
+            <article class="service">
+              <div class="icon">💼</div>
+              <h3>Business Websites</h3>
+              <p>
+                Professional websites that showcase your services and help potential clients contact
+                you with confidence.
+              </p>
+            </article>
+
+            <article class="service">
+              <div class="icon">🎨</div>
+              <h3>Landing Pages</h3>
+              <p>
+                High-converting pages designed to present products, campaigns, and offers in a clean,
+                persuasive way.
+              </p>
+            </article>
+
+            <article class="service">
+              <div class="icon">🛠️</div>
+              <h3>Website Maintenance</h3>
+              <p>
+                Updates, improvements, and website support to keep your online presence smooth,
+                relevant, and effective.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Recent Work</div>
+              <h2>Projects designed to impress.</h2>
+            </div>
+          </div>
+
+          <div class="project-grid">
+            <article class="project">
+              <div
+                class="project-thumb"
+                style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80');"
+              ></div>
+              <div class="project-body">
+                <h3>AgroBrand Hub</h3>
+                <p>Modern company website for a farming and agro-business brand.</p>
+                <div class="tags">
+                  <span>Branding</span>
+                  <span>Business</span>
+                  <span>Responsive</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div
+                class="project-thumb"
+                style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80');"
+              ></div>
+              <div class="project-body">
+                <h3>EduConnect</h3>
+                <p>Clean educational platform landing page for a learning brand.</p>
+                <div class="tags">
+                  <span>Landing Page</span>
+                  <span>Education</span>
+                  <span>UI</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div
+                class="project-thumb"
+                style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80');"
+              ></div>
+              <div class="project-body">
+                <h3>LocalServe</h3>
+                <p>Service business website built to convert local customer inquiries.</p>
+                <div class="tags">
+                  <span>Service</span>
+                  <span>SEO</span>
+                  <span>Fast</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="cta-banner">
+            <div>
+              <div class="section-label" style="color: rgba(255, 255, 255, 0.8);">Let’s build something great</div>
+              <h2 style="color: #fff; margin-top: 8px;">Need a website that looks professional and works for your business?</h2>
+            </div>
+            <a href="#contact" class="button secondary" style="background: #fff; color: var(--primary-dark);">Start a Project</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Contact</div>
+              <h2>Let’s bring your idea online.</h2>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <div class="contact-card">
+              <strong>Email</strong>
+              <a href="mailto:josephwebdev@gmail.com">josephwebdev@gmail.com</a>
+            </div>
+            <div class="contact-card">
+              <strong>Phone</strong>
+              <a href="tel:+2348000000000">+234 800 000 0000</a>
+            </div>
+            <div class="contact-card">
+              <strong>Location</strong>
+              <span>Ogbomoso, Oyo State, Nigeria</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-wrap">
+        <div>© <span id="year"></span> Joseph. All rights reserved.</div>
+        <div>Built for people and brands that want to stand out online.</div>
+      </div>
+    </footer>
+
+    <script>
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
